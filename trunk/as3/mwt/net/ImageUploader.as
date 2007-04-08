@@ -1,3 +1,8 @@
+/*
+ Copyright (c) 2007, Mukunda Modell. All rights reserved.
+
+ See LICENSE.txt for terms of use.
+*/
 package mwt.net
 {
 	import flash.events.*;
