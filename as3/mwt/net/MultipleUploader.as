@@ -1,3 +1,12 @@
+/*
+
+ MulitpleUploader.as (an ActionScript 3 File Upload Class)
+
+ Copyright (c) 2007, Mukunda Modell. All rights reserved.
+
+ See LICENSE.txt for terms of use.
+
+*/
 package mwt.net
 {
 	import flash.display.DisplayObject;
@@ -15,24 +24,24 @@ package mwt.net
 		public static var LIST_COMPLETE:String = "listComplete";
 		protected var imageTypes:FileFilter;
 		public var fileTypes:Array;
-//		public var fileRefList:FileReferenceList = new FileReferenceList();
 		public var request:URLRequest;
 		public var pendingFiles:Array = new Array();
-		public var progressHandler:DisplayObject;
 		public var currentFile:FileReference;
 		public var bytesLoaded:uint;
 		public var bytesTotal:uint;
-		//public var progressHandler:Function;
 
+		/* Constructor */
 		public function MultipleUploader() {
 			this.fileTypes = new Array();
-			initializeListListeners();
+			addEventListener(Event.SELECT, selectHandler);
+			addEventListener(Event.CANCEL, cancelHandler);
 		}
 
+		/* set the upload url */
 		public function setURL(url:String):void {
 			this.request = new URLRequest(url);
 		}
-
+		/* show the upload dialog */
 		public function showDialog():Boolean {
 			var success:Boolean = false;
 			try {
@@ -48,11 +57,6 @@ package mwt.net
 			return success;
 		}
 
-		private function initializeListListeners():void {
-			addEventListener(Event.SELECT, selectHandler);
-			addEventListener(Event.CANCEL, cancelHandler);
-		}
-
 		private function doOnComplete():void {
 			var event:UploadEvent = new UploadEvent("UploadComplete",this);
 			dispatchEvent(event);
@@ -61,6 +65,7 @@ package mwt.net
 			var event:UploadEvent = new UploadEvent("FileComplete",this);
 			dispatchEvent(event);
 		}
+
 		private function addPendingFile(file:FileReference):void {
 			trace("addPendingFile: name=" + file.name);
 			pendingFiles.push(file);
@@ -84,9 +89,7 @@ package mwt.net
 				}
 			}
 		}
-		public function addProgressHandler(handler:DisplayObject):void {
-			this.progressHandler = handler;
-		}
+
 
 		private function selectHandler(event:Event):void {
 			trace("selectHandler: " + fileList.length + " files");
@@ -96,27 +99,22 @@ package mwt.net
 				file = FileReference(fileList[i]);
 				addPendingFile(file);
 			}
-			if (progressHandler) {
-				var newevent:UploadEvent = new UploadEvent("UploadStarted",this);
-				progressHandler.dispatchEvent(newevent);
-			}
+			var newevent:UploadEvent = new UploadEvent("UploadStarted",this);
+			dispatchEvent(newevent);
 		}
 
 		private function cancelHandler(event:Event):void {
 			trace("Browse Canceled");
-			if (progressHandler) {
-				var newevent:UploadEvent = new UploadEvent("BrowseCancel",this);
-				progressHandler.dispatchEvent(newevent);
-			}
+			var newevent:UploadEvent = new UploadEvent("BrowseCancel",this);
+			dispatchEvent(newevent);
+
 		}
 
 		private function openHandler(event:Event):void {
 			var file:FileReference = FileReference(event.target);
 			currentFile=file;
-			if (progressHandler) {
-				var newevent:UploadEvent = new UploadEvent("FileOpen",this);
-				progressHandler.dispatchEvent(newevent);
-			}
+			var newevent:UploadEvent = new UploadEvent("FileOpen",this);
+			dispatchEvent(newevent);
 			trace("openHandler: name=" + file.name);
 		}
 
@@ -125,10 +123,9 @@ package mwt.net
 			currentFile=file;
 			this.bytesLoaded = event.bytesLoaded;
 			this.bytesTotal = event.bytesTotal;
-			if (progressHandler) {
-				var newevent:UploadEvent = new UploadEvent("FileProgress",this);
-				progressHandler.dispatchEvent(newevent);
-			}
+			var newevent:UploadEvent = new UploadEvent("FileProgress",this);
+			dispatchEvent(newevent);
+
 			trace("progressHandler: name=" + file.name + " bytesLoaded=" + event.bytesLoaded + " bytesTotal=" + event.bytesTotal);
 		}
 
@@ -140,18 +137,22 @@ package mwt.net
 
 		private function httpErrorHandler(event:Event):void {
 			var file:FileReference = FileReference(event.target);
-			trace("httpErrorHandler: name=" + file.name);
+			transferErrorHandler(event, "http", file);
 		}
 
 		private function ioErrorHandler(event:Event):void {
 			var file:FileReference = FileReference(event.target);
-			trace("ioErrorHandler: name=" + file.name);
+			transferErrorHandler(event, "io", file);
 		}
 
 		private function securityErrorHandler(event:Event):void {
 			var file:FileReference = FileReference(event.target);
-			trace("securityErrorHandler: name=" + file.name + " event=" + event.toString());
+			transferErrorHandler(event, "security", file);
 		}
-
+		private function transferErrorHandler(event:Event, errorType:String, file:FileReference):void {
+			trace("(" + file.name + ") " + errorType + " Error: " + event.toString());
+			var newevent:UploadEvent = new UploadEvent("TransferError",this);
+			dispatchEvent(newevent);
+		}
 	}
 }
