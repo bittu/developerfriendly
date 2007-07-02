@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE window PUBLIC "-//MOZILLA//DTD XUL V1.0//EN" "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+
+<dialog id="webrunner_about"
+        windowtype="WebRunner"
+        title="About WebRunner"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        width="440"
+        height="340"
+        persist="width height"
+		buttons="accept"
+		ondialogaccept="return true;"
+        >
+	
+		<iframe flex='1' src="chrome://webrunner/content/about.html" type="content"/>
+
+</dialog>

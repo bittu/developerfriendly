@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE dialog PUBLIC "-//MOZILLA//DTD XUL V1.0//EN" "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+
+<prefwindow id="appPreferences" type="prefwindow" title="Webrunner Preferences"
+			maxwidth='580' width='500' height='420'
+            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<prefpane id="pane1" label="Main">
+		 
+		<vbox flex='1'>
+			<preferences>
+				<preference id="pref-startURI" name="webrunner.startURI" type="string"/>
+				<preference id="pref-rememberPasswords" name="signon.rememberSignons" type="bool"/>
+			</preferences>
+			<groupbox  flex='5' minheight='280'>
+			  <caption label="WebRunner Settings"/>
+				
+				<hbox>
+					<label   flex='4' for="txt-startURI" value="WebRunner Homepage:"/>
+					<textbox flex='16' id="txt-startURI" preference="pref-startURI"
+								tooltiptext="WebRunner Homepage" />
+				</hbox>
+			</groupbox>
+			<groupbox flex='1' minheight='35'>
+				<caption label="Security Settings"/>
+				<hbox>
+					<label    flex='4' for='check-rememberPasswords' value="Store Passwords for easy login?"/>
+					<checkbox flex='5' preference="pref-rememberPasswords" id="check-rememberPasswords"/>
+				</hbox>
+			</groupbox>
+			<spacer flex='10'/>
+			<hbox flex='1'>
+				<spacer flex='22'/>
+				<button label="Done" oncommand="window.close()" flex='2'/>
+				<spacer flex='2'/>
+			</hbox>
+			<spacer flex='0' height='5' minheight='2' maxheight='10'/>
+
+		</vbox>
+	</prefpane>
+</prefwindow>
