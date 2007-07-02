@@ -8,7 +8,16 @@ This is WebRunner, a simple XULRunner application which implements a minimal web
 
 = Details =
 
+== Purpose ==
 The main use for WebRunner is to experiment with XULRunner application development. There is very little functionality provided beyond an example application structure for an over-simplified web browser application.
 
+== Online Application Wrapper ==
 You might find WebRunner to be useful for wrapping an online application into it's own separate browser window with it's own unique process. This can make a web application feel more like a regular desktop application.
+
+== Changes ==
+The following changes have been made to the original WebRunner code:
+
+ * Wrapped the app with a Mac OS X Application Bundle
+ * Implemented a simple Preferences dialog
+ * Created a spiffy [http://www.developerfriendly.com/files/nodeimage/1/eed425e1ed3386de91d307ed70d7781d_tn.png icon]
 
