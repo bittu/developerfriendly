@@ -19,5 +19,4 @@ The following changes have been made to the original WebRunner code:
 
  * Wrapped the app with a Mac OS X Application Bundle
  * Implemented a simple Preferences dialog
- * Created a spiffy [http://www.developerfriendly.com/files/nodeimage/1/68bf614014e3fe16ded7108b7ea61848_tn.png]
-
+ * Created a spiffy icon: [http://www.developerfriendly.com/files/nodeimage/1/68bf614014e3fe16ded7108b7ea61848_tn.png]
