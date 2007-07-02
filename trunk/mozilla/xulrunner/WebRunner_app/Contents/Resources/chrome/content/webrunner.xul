@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        id="webrunner"
+        windowtype="webrunner:main"
+        title="WebRunner"
+        width="750" height="550"
+        screenX="10" screenY="10"
+        persist="width,height,screenX,screenY"
+		onunload="shutdownApplication(false)">
+
+  <script type="text/javascript" src="chrome://global/content/globalOverlay.js"/>
+  <script type="text/javascript" src="webrunner.js"/>
+  <script type="text/javascript" src="xulapp-util.js"/>
+  <popupset>
+    <popup id="main-popup">
+      <menuitem id="cut-menuitem" label="Cut" oncommand="goDoCommand('cmd_cut');"/>
+      <menuitem id="copy-menuitem" label="Copy" oncommand="goDoCommand('cmd_copy');"/>
+      <menuitem id="paste-menuitem" label="Paste" oncommand="goDoCommand('cmd_paste');"/>
+      <menuitem id="delete-menuitem" label="Delete" oncommand="goDoCommand('cmd_delete');"/>
+      <menuitem id="selectall-menuitem" label="Select All" oncommand="goDoCommand('cmd_selectAll');"/>
+    </popup>
+  </popupset>
+
+  <commandset id='main-commandset'>
+	<command id='cmd_gohome'  oncommand="menuCommand('cmd_gohome')"/>
+  </commandset>
+
+
+  
+  <toolbox id='main-toolbox' flex='1'>
+	  <!-- enable application menus on Mac OS X ... display:none causes the menus to be invisible on other platforms -->
+	<menubar id="app-menubar" >
+	  
+	  <menuitem id="aboutName" label="About WebRunner" oncommand="menuCommand('cmd_about');"/>
+	  <menuitem id="menu_preferences" label="Preferences" oncommand="menuCommand('cmd_pref');"/>
+	  <menuitem id="menu_FileQuitItem" label="Quit WebRunner" oncommand="menuCommand('cmd_quit');"/>
+	  <menu id="mac-tools-menu" label="Tools">
+		  <menupopup id="mac-tools-popup">
+			  <menuitem id='menu_config' label='Advanced Config' oncommand="menuCommand('cmd_config');"/>
+			  <menuitem id='menu_passwordmanager' label='Password Manager' oncommand="menuCommand('cmd_passwordmanager');"/>
+			  <menuitem id='menu_jsconsole' label='JavaScript Console' oncommand="menuCommand('cmd_jsconsole');"/>
+	  <!--		<menuitem id="menu_newWindow" label="New Window" oncommand="menuCommand('cmd_newwindow');"/>
+	  -->
+		  </menupopup>
+	  </menu>
+	</menubar>
+	<toolbar id='main-toolbar' class='chromeclass-toolbar-additional'>
+		<toolbaritem flex='10'>
+			<toolbarbutton id='home_button' label='Home' class='toolbarbutton-1' command="cmd_gohome"/>
+			<toolbarseparator/>	
+		</toolbaritem>
+		<toolbaritem flex='60'><textbox id='tool_url' flex='1' readonly="true"/></toolbaritem>
+
+	</toolbar>
+  </toolbox>
+  <browser id="main-browser" flex="99" type="content-primary" context="main-popup"/>
+
+  <statusbar>
+    <statusbarpanel id="status" label="" crop="end" flex="2"/>
+	<statusbarpanel id="statusSpacer" label="" flex="100"/>
+    <progressmeter id="progress" mode="determined" value="0%" flex="10"/>
+	<statusbarpanel id="securityLabel" label="SSL:" flex="2"/>
+    <statusbarpanel id="security" label="" />
+  </statusbar>
+
+</window>
