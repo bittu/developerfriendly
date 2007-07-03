@@ -5,7 +5,6 @@
 
 This is WebRunner, a simple XULRunner application which implements a minimal web browser for use with your favorite web application. The code is based on [http://starkravingfinkle.org/blog/2007/03/site-specific-browser-using-webrunner/ this code] by Mark Finkle and Benjamin Smedberg.
 
-
 = Details =
 
 == Purpose ==
@@ -20,3 +19,7 @@ The following changes have been made to the original WebRunner code:
  * Wrapped the app with a Mac OS X Application Bundle
  * Implemented a simple Preferences dialog
  * Created a spiffy icon: [http://www.developerfriendly.com/files/nodeimage/1/68bf614014e3fe16ded7108b7ea61848_tn.png]
+
+== Source ==
+
+[http://developerfriendly.googlecode.com/svn/trunk/mozilla/xulrunner/WebRunner_app/]
