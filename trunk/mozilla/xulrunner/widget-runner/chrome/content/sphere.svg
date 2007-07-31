@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created using Karbon14, part of koffice: http://www.koffice.org/karbon -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="311.812px" height="311.812px">
+  <defs>
+    <radialGradient id="defitem0" gradientUnits="userSpaceOnUse" cx="162.424" cy="247.805" fx="162.424" fy="247.805" r="156" spreadMethod="reflect" >
+      <stop stop-color="#269aff" offset="0.117647" stop-opacity="1" />
+      <stop stop-color="#144991" offset="0.80719" stop-opacity="1" />
+    </radialGradient>
+    <radialGradient id="defitem1" gradientUnits="userSpaceOnUse" cx="161.924" cy="242.805" fx="155.924" fy="193.805" r="264.523" >
+      <stop stop-color="#dfe9ff" offset="0" stop-opacity="0" />
+      <stop stop-color="#ffffff" offset="1" stop-opacity="1" />
+    </radialGradient>
+  </defs>
+  <g id="Layer">
+    <path fill="url(#defitem0)" stroke="#000000" stroke-width="1.47402" d="M297.631 155.416C297.631 77.417 234.399 14.186 156.398 14.186C78.3973 14.186 15.1654 77.417 15.1654 155.416C15.1654 233.416 78.3973 296.647 156.398 296.647C234.399 296.647 297.631 233.416 297.631 155.416Z"  />
+    <path fill="url(#defitem1)" stroke="#000000" stroke-width="0" d="M275.424 108.055C275.424 57.107 222.37 15.805 156.924 15.805C91.4781 15.805 38.4238 57.107 38.4238 108.055C38.4238 159.002 91.4781 200.305 156.924 200.305C222.37 200.305 275.424 159.002 275.424 108.055Z"  />
+  </g>
+</svg>

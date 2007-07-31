@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE window PUBLIC "-//MOZILLA//DTD XUL V1.0//EN" "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<?xml-stylesheet href="chrome://widgetrunner/skin/widgetrunner.css" type="text/css"?>
+
+<window id="widgetrunner_dock"
+        windowtype="WidgetRunner"
+        title="WidgetRunner"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+		minheight="20"
+        screenX="0"
+        screenY="0"
+        hidechrome="true" flex="1">
+		
+		<script src="lib/jquery.js"/>
+		<script src="xulapp.js"/>
+		<script src="widgetrunner.js"/>
+		<script src="widgets/widget.js"/>
+
+		<popupset>
+			<menupopup id="mainMenu">
+				<menuitem label="foxkeh" class="menuitem-iconic"
+						  oncommand="loadWidget('foxkeh','chrome://foxkehclock/content/foxkehclock_xulrunner.xul')"/>
+				<menuitem label="Sphere" class="menuitem-iconic"
+						  oncommand="loadWidget('sphere');"/>
+				<menuitem label="Ticker" class="menuitem-iconic"
+						  oncommand="menucmd('ticker');"/>
+				<menuitem label="xkcd" class="menuitem-iconic"
+						  oncommand="loadWidget('xkcd')"/>
+				<menuitem label="Quit"	class="menuitem-iconic"
+						  oncommand="menucmd('quit');"/>
+				<menuseparator/>
+				<menuitem label="Extension Manager" class="menuitem-iconic"
+						  oncommand="menucmd('extensions')"/>
+				<menuitem label="Console" class="menuitem-iconic"
+						  oncommand="menucmd('console')"/>
+				<menuitem label="About" class="menuitem-iconic"
+						  oncommand="menucmd('about')"/>
+			</menupopup>
+		</popupset>
+		<!--<toolbar id='widget_toolbar'>-->
+			<box context="mainMenu" width="128" height="128">
+				<html:img src="globe.png" class='dragHandle' style="width:100%;height:100%"/>
+			</box>
+
+			
+		<!--</toolbar>-->
+</window>

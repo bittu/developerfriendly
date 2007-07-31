@@ -1,0 +1,9 @@
+@import url(chrome://global/skin/);
+
+browser, iframe, window, box, label {
+	background: transparent !important;
+}
+
+.dragHandle {
+	cursor: move;
+}

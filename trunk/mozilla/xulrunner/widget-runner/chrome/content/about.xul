@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet href="chrome://widgetrunner/skin/about.css" type="text/css"?>
+
+<dialog id="about" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        title="About" buttons="accept" width="420" height="220">
+    
+  <script type="application/x-javascript" src="chrome://widgetrunner/content/about.js"/>
+
+  <vbox flex="1">
+    <label id="version"/>
+    <textbox id="useragent" multiline="true" readonly="true" flex="2"/>
+    <label flex="1" id="copyright" value="Copyright (C) 2007 by Mukunda Modell. All Rights Reserved"/>
+    <description flex="2" id="license" >
+        Use and Distribution is subject to the terms of the
+        Mozilla Public License (MPL) Version 1.1
+    </description>
+  </vbox>
+</dialog>
+

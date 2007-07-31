@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://widgetrunner/skin/borderless-widget.css" type="text/css"?>
+
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        id="webrunner"
+        windowtype="webrunner:main"
+        title="WebRunner"
+        width="750" height="550"
+        screenX="10" screenY="10"
+        persist="width,height,screenX,screenY,sizemode"
+		hidechrome="true">
+
+  <script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
+  <script type="application/x-javascript" src="chrome://global/content/printUtils.js"/>
+  <script type="application/x-javascript" src="chrome://widgetrunner/content/paramParser.js"/>
+  <script type="application/x-javascript" src="chrome://widgetrunner/content/webrunner.js"/>
+
+  <popupset>
+    <popup id="main-popup">
+      <menuitem id="cut-menuitem" label="Cut" oncommand="goDoCommand('cmd_cut');"/>
+      <menuitem id="copy-menuitem" label="Copy" oncommand="goDoCommand('cmd_copy');"/>
+      <menuitem id="paste-menuitem" label="Paste" oncommand="goDoCommand('cmd_paste');"/>
+      <menuitem id="delete-menuitem" label="Delete" oncommand="goDoCommand('cmd_delete');"/>
+      <menuseparator/>
+      <menuitem id="selectall-menuitem" label="Select All" oncommand="goDoCommand('cmd_selectAll');"/>
+      <menuseparator/>
+      <menuitem id="print-menuitem" label="Print..." oncommand="PrintUtils.print();"/>
+      <menuseparator/>
+      <menuitem id="about-menuitem" label="About WebRunner..." oncommand="showAbout();"/>
+    </popup>
+  </popupset>
+
+  <keyset>
+    <key class="nav" modifiers="alt" keycode="VK_LEFT" oncommand="getBrowser().goBack()"/>
+    <key class="nav" modifiers="alt" keycode="VK_RIGHT" oncommand="getBrowser().goForward()"/>
+    <key class="nav" modifiers="alt" keycode="VK_HOME" oncommand="getBrowser().loadURI(params.uri, null, null)"/>
+    <key modifiers="accel" key="W" oncommand="window.close()"/>
+  </keyset>
+
+  <toolbox>
+    <toolbar id="locationbar">
+      <textbox id="location" flex="1" readonly="true"/>
+    </toolbar>
+  </toolbox>
+
+  <browser id="main-browser" flex="1" type="content-primary" context="main-popup"/>
+
+  <statusbar id="statusbar" style="display:none;">
+    <statusbarpanel id="status" label="" crop="end" flex="1"/>
+    <progressmeter id="progress" mode="determined" value="0%" style="display: none"/>
+    <statusbarpanel id="security" label="" style="display: none"/>
+	<statusbarpanel id="statusbar-tools" label="">
+		<toolbarbutton type="menu">
+			<menupopup id="tools-popup">
+			  <menuitem id='menu_config' label='Advanced Config' oncommand="menuCommand('cmd_config');"/>
+			  <menuitem id='menu_passwordmanager' label='Password Manager' oncommand="menuCommand('cmd_passwordmanager');"/>
+			  <menuitem id='menu_jsconsole' label='JavaScript Console' oncommand="menuCommand('cmd_jsconsole');"/>
+			</menupopup>
+		</toolbarbutton>
+	</statusbarpanel>
+  </statusbar>
+</window>

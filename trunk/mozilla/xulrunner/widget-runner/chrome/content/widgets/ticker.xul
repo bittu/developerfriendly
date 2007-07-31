@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE window PUBLIC "-//MOZILLA//DTD XUL V1.0//EN" "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<?xml-stylesheet href="chrome://widgetrunner/skin/borderless-widget.css" type="text/css"?>
+
+<window id="ticker_window"
+        windowtype="Widget"
+        title="Ticker"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        hidechrome="true">
+
+	<html:embed src="http://www.dluxwebcandy.com/ticker/ticker.swf"
+	flashvars="id=b55778534a42f639008876909a19ce77" quality="high" bgcolor="#000000"
+	wmode="window" width="468" height="60" name="D.Lux Ticker" align="middle"/>
+
+</window>

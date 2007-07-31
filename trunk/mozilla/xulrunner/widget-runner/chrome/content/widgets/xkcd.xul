@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!DOCTYPE window PUBLIC "-//MOZILLA//DTD XUL V1.0//EN" "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<?xml-stylesheet href="chrome://widgetrunner/skin/borderless-widget.css" type="text/css"?>
+
+<window id="xkcd_window"
+        windowtype="Widget"
+        title="xkcd"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        hidechrome="true">
+		<script src="widget.js"/>
+		<script src="../lib/jquery.js"/>
+		<script language="javascript"><![CDATA[
+			function loadWidget() {
+				loadComic();
+				window.opener.widgetRunner.cron.add(
+						{ run: function() {
+							//alert("loadComic");
+							loadComic();
+						}}
+				);
+			}
+			function loadComic() {
+				var frame = document.getElementById("frame");
+				frame.addEventListener("load", loaded, false);
+				frame.setAttribute("src", "http://www.xkcd.com");
+				setTimeout(loaded,4000);
+			}
+			function loaded()
+			{
+				var frame = document.getElementById("frame");
+				var images = frame.contentDocument.getElementsByTagName("img");
+				var img = document.getElementById("image");
+				img.setAttribute("src",images[1].src);
+				img.setAttribute("width",images[1].width);
+				img.setAttribute("width",images[1].height);
+				var lbl = document.getElementById("lbl");
+				lbl.innerHTML = images[1].title;
+				var ttl = document.getElementById("ttl");
+				ttl.innerHTML = images[1].alt;
+				try {
+					sizeToContent();
+				}catch(err) {}
+				var finished = function() {
+			
+					img.setAttribute("width",images[1].width);
+					img.setAttribute("width",images[1].height);
+					window.resizeBy(0,-10);
+					try {
+						sizeToContent();
+					}catch(err) {}
+					frame.setAttribute("src","about:blank");
+
+				}
+				setTimeout(finished,400);
+				
+			}
+			
+		]]></script>
+		<html:div >
+			<html:div class='dragHandle' id="ttl"></html:div>
+		<html:a href="http://www.xkcd.com">
+			<html:img id="image" style="min-height:180px;width:100%"/>
+		</html:a>
+		<html:div id="lbl"></html:div>
+		</html:div>
+		<iframe id='frame' width="1" height="1"/>
+		
+</window>
