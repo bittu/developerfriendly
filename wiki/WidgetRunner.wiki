@@ -1,4 +1,5 @@
-#summary WidgetRunner project overview
+#summary Cross-platform widget engine for XULRunner
+#labels Featured
 
 = Introduction =
 
