@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE window PUBLIC "-//MOZILLA//DTD XUL V1.0//EN" "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+<?xml-stylesheet href="chrome://widgetrunner/skin/borderless-widget.css" type="text/css"?>
+
+<window id="sphere_window"
+        windowtype="SphereWidget"
+        title="SphereSVG"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        hidechrome="true">
+
+	<iframe src="sphere.svg" scrolling="no" style="background:transparent"/>
+
+</window>

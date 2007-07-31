@@ -1,0 +1,11 @@
+content  widgetrunner  content/
+locale   widgetrunner  en-US         locale/en-US/
+skin     widgetrunner  standard/1.0  skin/standard/
+
+locale   branding   en-US         locale/en-US/brand/
+
+content  foxkehclock  foxkehclock/content/
+locale   foxkehclock  en-US         foxkehclock/locale/en-US/
+skin     foxkehclock  standard/1.0  foxkehclock/skin/classic/
+
+

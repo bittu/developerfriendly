@@ -1,0 +1,22 @@
+/*
+ @import url(chrome://global/skin/);
+*/
+window, box, button {
+	background:transparent !important;
+}
+#widgetrunner_dock {
+	
+	background:transparent;
+
+}
+
+#widgetrunner_menubutton {
+	width:256px;
+	height:256px;
+	background:none;
+	
+}
+
+.dragHandle {
+	cursor: move;
+}
